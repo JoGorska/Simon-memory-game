@@ -42,10 +42,14 @@ describe("game object contains correct keys", () => {
 describe("newGame function clears the values in the keys of the game object", () => {
     beforeAll(() => {
         game.score = 42;
+        game.playerMoves = ["button1"]
         newGame();
-    })
+    });
     test("expect score to be 0", () => {
         
         expect(game.score).toEqual(0)
+    });
+    test("expect playerMoves to be empty array", () => {
+        expect(game.playerMoves.length).toEqual(0)
     })
 })
