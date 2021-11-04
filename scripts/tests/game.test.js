@@ -38,3 +38,14 @@ describe("game object contains correct keys", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
     });
 }) ;
+
+describe("newGame function clears the values in the keys of the game object", () => {
+    beforeAll(() => {
+        game.score = 42;
+        newGame();
+    })
+    test("expect score to be 0", () => {
+        
+        expect(game.score).toEqual(0)
+    })
+})
