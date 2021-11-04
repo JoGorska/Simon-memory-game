@@ -42,7 +42,8 @@ describe("game object contains correct keys", () => {
 describe("newGame function clears the values in the keys of the game object", () => {
     beforeAll(() => {
         game.score = 42;
-        game.playerMoves = ["button1"]
+        game.playerMoves = ["button1"];
+        game.currentGame = ["button2"];
         newGame();
     });
     test("expect score to be 0", () => {
@@ -51,5 +52,8 @@ describe("newGame function clears the values in the keys of the game object", ()
     });
     test("expect playerMoves to be empty array", () => {
         expect(game.playerMoves.length).toEqual(0)
-    })
-})
+    });
+    test("expect currentGame to be empty array", () => {
+        expect(game.currentGame.length).toEqual(0)
+    });
+});

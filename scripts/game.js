@@ -8,6 +8,7 @@ let game = {
 
 function newGame () {
     game.score = 0;
+    game.playerMoves = [];
 }
 
 // exports the object, curly braces are needed because more than will be exported
