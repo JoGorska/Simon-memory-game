@@ -64,5 +64,17 @@ describe("newGame function clears the values in the keys of the game object", ()
     });
     test("should display 0 for the element with id score", () => {
         expect(document.getElementById("score").innerText).toEqual(0);
-    })
+    });
+});
+
+describe("addTurn function works correctly", () => {
+    beforeAll(() =>{
+        game.playerMoves = []
+        game.currentGame = []
+        addTurn()
+    });
+    test("should be one move in the computer's game array", () => {
+        expect(game.currentGame.length).toEqual(1);
+    });
+
 });
