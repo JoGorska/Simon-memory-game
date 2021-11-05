@@ -16,6 +16,15 @@ function newGame () {
 function showScore () {
     document.getElementById("score").innerText = game.score
 }
+
+function addTurn() {
+    
+    let newMove = game.choices[Math.floor(Math.random()*game.choices.length)];
+    game.currentGame.push(newMove)
+        
+    
+}
+
 // exports the object, curly braces are needed because more than will be exported
 
-module.exports = {game, newGame, showScore};
+module.exports = {game, newGame, showScore, addTurn};

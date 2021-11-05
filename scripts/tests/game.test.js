@@ -6,7 +6,7 @@
 
 // import functions...
 
-const { game, newGame, showScore} = require("../game")
+const { game, newGame, showScore, addTurn} = require("../game")
 
 // this loads DOM before each test is run
 
