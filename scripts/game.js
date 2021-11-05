@@ -11,6 +11,7 @@ function newGame () {
     game.playerMoves = [];
     game.currentGame = [];
     showScore();
+    addTurn();
 }
 
 function showScore () {
@@ -19,8 +20,11 @@ function showScore () {
 
 function addTurn() {
     
+    game.playerMoves = []
+    
     let newMove = game.choices[Math.floor(Math.random()*game.choices.length)];
     game.currentGame.push(newMove)
+    //showTurn();
         
     
 }
