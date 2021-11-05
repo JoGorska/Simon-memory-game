@@ -10,8 +10,12 @@ function newGame () {
     game.score = 0;
     game.playerMoves = [];
     game.currentGame = [];
+    showScore();
 }
 
+function showScore () {
+    document.getElementById("score").innerText = game.score
+}
 // exports the object, curly braces are needed because more than will be exported
 
-module.exports = {game, newGame};
+module.exports = {game, newGame, showScore};
