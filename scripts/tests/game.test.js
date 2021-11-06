@@ -6,7 +6,7 @@
 
 // import functions...
 
-const { game, newGame, showScore, addTurn, lightsOn } = require("../game")
+const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game")
 
 // this loads DOM before each test is run
 
@@ -101,13 +101,12 @@ describe("gameplay works correctly", () => {
         lightsOn(game.currentGame[0]);
         expect(button.classList).toContain(game.currentGame[0] + "light");
     });
+
+    test("showTurns should update game.turnNumber", () => {
+        game.turnNumber = 42;
+        showTurns();
+        expect(game.turnNumber).toBe(0);
+    });
 });
 
-describe("ShowTurn function works correctly", () => {
-    beforeAll (() => {
-        game.currentGame = ["button1"];
-    });
-    test("ShowTurn should add and remove classes from button1", () => {
-        expect(document.getElementById("button1").classList.toContain("light"))
-    });
-})
+

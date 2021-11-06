@@ -27,13 +27,24 @@ function addTurn() {
     //showTurn();
 }
 
-function lightsOn (circ) {
-    document.getElementById("circ").classList.add("light");
-    setTimeout(() => {
-        document.getElementById("circ").classList.remove("light");
+function showTurns() {
+    game.turnNumber = 0;
+    let turns = setInterval(function () {
+        lightsOn(game.currentGame[game.turnNumber]);
+        game.turnNumber++;
+        if (game.turnNumber >= game.currentGame.length) {
+            clearInterval(turns);
+        }
+    }, 800);
+}
+
+function lightsOn(circ) {
+    document.getElementById(circ).classList.add(circ + "light");
+    setTimeout(function () {
+        document.getElementById(circ).classList.remove(circ + "light");
     }, 400);
 }
 
 // exports the object, curly braces are needed because more than will be exported
 
-module.exports = {game, newGame, showScore, addTurn, lightsOn };
+module.exports = {game, newGame, showScore, addTurn, lightsOn, showTurns };
