@@ -1,16 +1,16 @@
 
 let game = {
-    score: 0,
     currentGame: [],
     playerMoves: [],
+    score: 0,
     turnNumber: 0,
-    choices: ["button1", "button2", "button3", "button4"],
-}
+    choices: ["button1", "button2", "button3", "button4"]
+};
 
-function newGame () {
-    game.score = 0;
-    game.playerMoves = [];
+function newGame() {
     game.currentGame = [];
+    game.playerMoves = [];
+    game.score = 0;
     showScore();
     addTurn();
 }
@@ -39,10 +39,10 @@ function lightsOn(circ) {
     }, 400);
 }
 
-function showScore () {
-    document.getElementById("score").innerText = game.score
+function showScore() {
+    document.getElementById("score").innerText = game.score;
 }
 
-// exports the object, curly braces are needed because more than will be exported
+// exports each function
 
-module.exports = {game, newGame, showScore, addTurn, lightsOn, showTurns };
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };

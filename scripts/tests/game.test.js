@@ -16,6 +16,7 @@ beforeAll(() => {
     let fileContents = fs.readFileSync("index.html", "utf-8");
 
     // writes the content of index.html into fileContents
+    document.open();
     document.write(fileContents);
     document.close();
 
@@ -36,6 +37,9 @@ describe("game object contains correct keys", () => {
     });
     test("choices contains correct ids", () => {
         expect(game.choices).toEqual(["button1", "button2", "button3", "button4"]);
+    });
+    test("turnNumber key exists", () => {
+        expect("turnNumber" in game).toBe(true);
     });
 }) ;
 
@@ -65,6 +69,12 @@ describe("newGame function clears the values in the keys of the game object", ()
     // });
     test("should display 0 for the element with id score", () => {
         expect(document.getElementById("score").innerText).toEqual(0);
+    });
+    test("should clear the player moves array", () => {
+        expect(game.playerMoves.length).toBe(0);
+    });
+    test("should add one move to the computer's game array", () => {
+        expect(game.currentGame.length).toBe(1);
     });
 });
 
