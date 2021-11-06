@@ -25,10 +25,15 @@ function addTurn() {
     let newMove = game.choices[Math.floor(Math.random()*game.choices.length)];
     game.currentGame.push(newMove)
     //showTurn();
-        
-    
+}
+
+function lightsOn (circ) {
+    document.getElementById("circ").classList.add("light");
+    setTimeout(() => {
+        document.getElementById("circ").classList.remove("light");
+    }, 400);
 }
 
 // exports the object, curly braces are needed because more than will be exported
 
-module.exports = {game, newGame, showScore, addTurn};
+module.exports = {game, newGame, showScore, addTurn, lightsOn };
