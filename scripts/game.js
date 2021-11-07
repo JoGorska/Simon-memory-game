@@ -46,16 +46,19 @@ function showTurns() {
 }
 
 function lightsOn(circ) {
-    document.getElementById(circ).classList.add(circ + "light");
+    document.getElementById(circ).classList.add("light");
     setTimeout(function () {
-        document.getElementById(circ).classList.remove(circ + "light");
+        document.getElementById(circ).classList.remove("light");
     }, 400);
 }
 
 function playerTurn() {
     let i = game.playerMoves.length - 1;
+    // compares each element in arrays for player's moves and computer moves
     if (game.currentGame[i] === game.playerMoves[i]) {
+        // comparing lenght of arrays checks if the sequence has finished
         if (game.currentGame.length === game.playerMoves.length) {
+            //increases score
             game.score++;
             showScore();
             addTurn();
@@ -72,4 +75,4 @@ function showScore() {
 
 // exports each function
 
-module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns };
+module.exports = { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn };

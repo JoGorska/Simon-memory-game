@@ -6,7 +6,10 @@
 
 // import functions...
 
-const { game, newGame, showScore, addTurn, lightsOn, showTurns } = require("../game")
+const { game, newGame, showScore, addTurn, lightsOn, showTurns, playerTurn } = require("../game")
+
+// this is a spy to report if the alert has been trigered
+jest.spyOn(window, "alert").mockImplementation(() => { });
 
 // this loads DOM before each test is run
 
@@ -119,7 +122,7 @@ describe("gameplay works correctly", () => {
     test("should add correct class to light up the buttons", () => {
         let button = document.getElementById(game.currentGame[0]);
         lightsOn(game.currentGame[0]);
-        expect(button.classList).toContain(game.currentGame[0] + "light");
+        expect(button.classList).toContain("light");
     });
 
     test("showTurns should update game.turnNumber", () => {
@@ -132,6 +135,12 @@ describe("gameplay works correctly", () => {
         playerTurn();
         expect(game.score).toBe(1);
     });
+    test("playerTurn function should call an alert if the move is wrong", () => {
+        game.playerMoves.push("random");
+        playerTurn();
+        expect(window.alert).toBeCalledWith("Wrong move!")
+    })
+
     test("clicking during computer sequence should fail", () => {
         showTurns();
         game.lastButton = "";
