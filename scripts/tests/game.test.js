@@ -76,6 +76,8 @@ describe("newGame function clears the values in the keys of the game object", ()
     test("should add one move to the computer's game array", () => {
         expect(game.currentGame.length).toBe(1);
     });
+
+    // data-listener attribute can be used as a help to detect if event listener is attached.
     test("expect data-listener to be true", () => {
         newGame();
         const elements = document.getElementsByClassName("circle");
@@ -124,6 +126,17 @@ describe("gameplay works correctly", () => {
         game.turnNumber = 42;
         showTurns();
         expect(game.turnNumber).toBe(0);
+    });
+    test("should increment the score if the turn is correct", () => {
+        game.playerMoves.push(game.currentGame[0]);
+        playerTurn();
+        expect(game.score).toBe(1);
+    });
+    test("clicking during computer sequence should fail", () => {
+        showTurns();
+        game.lastButton = "";
+        document.getElementById("button2").click();
+        expect(game.lastButton).toEqual("");
     });
 });
 
