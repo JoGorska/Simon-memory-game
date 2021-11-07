@@ -76,6 +76,13 @@ describe("newGame function clears the values in the keys of the game object", ()
     test("should add one move to the computer's game array", () => {
         expect(game.currentGame.length).toBe(1);
     });
+    test("expect data-listener to be true", () => {
+        newGame();
+        const elements = document.getElementsByClassName("circle");
+        for (let element of elements) {
+            expect(element.getAttribute("data-listener")).toEqual("true");
+        }
+    });
 });
 
 describe("addTurn function works correctly", () => {
@@ -87,6 +94,7 @@ describe("addTurn function works correctly", () => {
     test("should be one move in the computer's game array", () => {
         expect(game.currentGame.length).toEqual(1);
     });
+    
 
 });
 
